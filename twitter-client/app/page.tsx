@@ -1,6 +1,9 @@
 import React from "react";
 import { BsTwitter, BsBell, BsEnvelope, BsBookmark } from "react-icons/bs";
-import { BiHash, BiSolidHomeCircle, BiUser } from "react-icons/bi";
+import { BiHash, BiMoney, BiSolidHomeCircle, BiUser } from "react-icons/bi";
+
+import { FeedCard } from "@/components/feedCard";
+import { PiDotsThreeCircle } from "react-icons/pi";
 
 interface TwitterSidebarButton {
   title: string;
@@ -29,8 +32,16 @@ const sidebarMenuItems: TwitterSidebarButton[] = [
     icon: <BsBookmark />,
   },
   {
+    title: "Twitter Blue",
+    icon: <BiMoney />,
+  },
+  {
     title: "Profile",
     icon: <BiUser />,
+  },
+  {
+    title: "More",
+    icon: <PiDotsThreeCircle />,
   },
 ];
 
@@ -38,30 +49,41 @@ export default function Home() {
   return (
     <div>
       <div className="grid grid-cols-12 h-screen w-screen px-56">
-        <div className="col-span-3 pt-8">
-          <div className="text-4xl hover:bg-gray-800 p-4 rounded-full h-fit w-fit cursor-pointer transition-all">
+        <div className="col-span-3 pt-1 ml-3">
+          <div className="text-3xl hover:bg-gray-800 p-3 rounded-full h-fit w-fit cursor-pointer transition-all">
             <BsTwitter />
           </div>
-          <div className="mt-4 text-2xl font-semibold pr-4">
+          <div className="mt-4 text-xl pr-4">
             <ul>
               {sidebarMenuItems.map((item) => (
                 <li
                   key={item.title}
-                  className="flex items-center justify-start gap-4 hover:bg-gray-800 px-5 py-2 w-fit rounded-full cursor-pointer mt-2"
+                  className="flex items-center justify-start gap-4 hover:bg-gray-800 px-3 py-2 w-fit rounded-full cursor-pointer mt-1"
                 >
                   <span>{item.icon}</span>
                   <span>{item.title}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-5 pr-10">
-              <button className="bg-sky-500 font-semibold rounded-full p-3 w-full">
+            <div className="mt-5">
+              <button className="bg-sky-500 font-semibold rounded-full py-2 px-4 w-full">
                 Tweet
               </button>
             </div>
           </div>
         </div>
-        <div className="col-span-6 border-r border-l border-gray-400"></div>
+        <div className="col-span-6 border-l border-r border-gray-600 h-screen overflow-y-scroll">
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+          <FeedCard />
+        </div>
         <div className="col-span-3"></div>
       </div>
     </div>
